@@ -17,7 +17,7 @@ class String
 	def self.create_colors
 		color_codes.each do |key, value|
 			self.send(:define_method, "#{key}") do
-				"\e[#{value}m#{self}\e[0m"
+				"\e[#{value}m#{self}\e[39m"
 			end
 		end
 	end
@@ -27,7 +27,7 @@ class String
 	instance_eval do
 		def sample_colors
 			color_codes.each do |key, value|
-				puts "This is \e[#{value}m#{key}\e[0m."
+				puts "This is \e[#{value}m#{key}\e[39m."
 			end
 		end
 	end
